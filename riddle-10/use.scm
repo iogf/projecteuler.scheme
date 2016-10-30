@@ -1,0 +1,13 @@
+(define (act procedure xs)
+        (define (iter xs)
+                (if (not (null? xs))
+                    (begin (procedure (car xs))
+                           (iter (cdr xs)))))
+        (iter xs))
+(define (mi min max inc)
+        (define (iter xs c)
+                (if (< c max)
+                    (iter (append xs `(,c)) (+ c inc))
+                    xs))
+
+        (iter '() min)
